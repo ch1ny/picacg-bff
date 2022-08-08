@@ -1,11 +1,11 @@
 import { auth } from './auth';
 import { collections } from './collections';
 
-export class Controller {}
+export class Service {}
 
-const controller = {
+const service = {
 	auth,
 	collections,
 };
 
-export default controller;
+export default service;

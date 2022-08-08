@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import controller from './controller';
+import { router } from './router';
 
 const PORT = 9876;
 
@@ -15,13 +15,6 @@ app.get('/*', async (request: Request, response: Response): Promise<any> => {
 
 	const pathname = request.path;
 
-	switch (pathname) {
-		case '/login':
-			const { email, password } = request.query as {
-				email: string;
-				password: string;
-			};
-			const token = await controller.auth.getToken(email, password);
-			response.send(token);
-	}
+	const controller = router[pathname];
+	response.send(await controller(request, response));
 });
