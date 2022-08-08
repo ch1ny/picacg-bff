@@ -1,7 +1,9 @@
 import { auth } from './auth';
 import { collections } from './collections';
 
-export class Controller {}
+export class Controller {
+	constructor() {}
+}
 
 const controller = {
 	auth,
