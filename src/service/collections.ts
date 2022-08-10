@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import { PicAcgConstants } from '../constants';
 import { Service } from '../core';
-import { getSignature } from '../util';
+import { generateHeader } from '../util';
 
 class Collections extends Service {
 	constructor() {
@@ -9,19 +9,8 @@ class Collections extends Service {
 	}
 
 	async getCollections(token: string): Promise<ICollections> {
-		const requestTime = (new Date().getTime() / 1000).toFixed(0);
-		return await fetch(`${PicAcgConstants.Url}collections`, {
-			headers: {
-				...PicAcgConstants.Headers,
-				time: requestTime,
-				signature: getSignature(
-					'collections',
-					requestTime,
-					PicAcgConstants.Headers.nonce,
-					'GET'
-				),
-				authorization: token,
-			},
+		return await fetch(`${PicAcgConstants.Url}/collections`, {
+			headers: generateHeader('collections', 'GET', token),
 		}).then((res) => res.json());
 	}
 }

@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import { PicAcgConstants } from '../constants';
 import { Service } from '../core';
-import { getSignature } from '../util';
+import { generateHeader } from '../util';
 
 class Auth extends Service {
 	constructor() {
@@ -9,20 +9,9 @@ class Auth extends Service {
 	}
 
 	async getToken(email: string, password: string) {
-		const requestUrl = `${PicAcgConstants.Url}auth/sign-in`;
-		const requestTime = (new Date().getTime() / 1000).toFixed(0);
-		const token: IToken = await fetch(requestUrl, {
+		const token: IToken = await fetch(`${PicAcgConstants.Url}/auth/sign-in`, {
 			method: 'POST',
-			headers: {
-				...PicAcgConstants.Headers,
-				time: requestTime,
-				signature: getSignature(
-					'auth/sign-in',
-					requestTime,
-					PicAcgConstants.Headers.nonce,
-					'POST'
-				),
-			},
+			headers: generateHeader('auth/sign-in', 'POST'),
 			body: JSON.stringify({ email, password }),
 		}).then((res) => res.json() as Promise<any>);
 
