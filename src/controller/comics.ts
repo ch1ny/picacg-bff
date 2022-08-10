@@ -7,31 +7,31 @@ class Comics extends Controller {
 		super();
 	}
 
-	async getComicInfo(request: Request, response: Response) {
+	async getComicsInfo(request: Request, response: Response) {
 		const { token, id } = request.query as {
 			token: string;
 			id: string;
 		};
-		return await service.comics.getComicInfo(token, id);
+		return await service.comics.getComicsInfo(token, id);
 	}
 
-	async getComicChapters(request: Request, response: Response) {
+	async getComicsChapters(request: Request, response: Response) {
 		const { token, id, page } = request.query as {
 			token: string;
 			id: string;
 			page: string;
 		};
-		return await service.comics.getComicEps(token, id, parseInt(page));
+		return await service.comics.getComicsEps(token, id, parseInt(page));
 	}
 
-	async getComicPics(request: Request, response: Response) {
+	async getComicsPics(request: Request, response: Response) {
 		const { token, id, chapterId, page } = request.query as {
 			token: string;
 			id: string;
 			chapterId: string;
 			page: string;
 		};
-		return await service.comics.getComicPics(token, id, chapterId, parseInt(page));
+		return await service.comics.getComicsPics(token, id, chapterId, parseInt(page));
 	}
 }
 

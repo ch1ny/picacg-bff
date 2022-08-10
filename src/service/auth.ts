@@ -8,7 +8,7 @@ class Auth extends Service {
 		super();
 	}
 
-	async getToken(email: string, password: string) {
+	async getToken(email: string, password: string): Promise<IToken> {
 		const token: IToken = await fetch(`${PicAcgConstants.Url}/auth/sign-in`, {
 			method: 'POST',
 			headers: generateHeader('auth/sign-in', 'POST'),

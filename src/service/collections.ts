@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 import { PicAcgConstants } from '../constants';
 import { Service } from '../core';
+import { ICollections } from '../types';
 import { generateHeader } from '../util';
 
 class Collections extends Service {

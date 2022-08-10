@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 import { PicAcgConstants } from '../constants';
 import { Service } from '../core';
+import { ICategories, ICategoryDetail } from '../types';
 import { generateHeader } from '../util';
 
 class Categories extends Service {
@@ -13,7 +14,7 @@ class Categories extends Service {
 	 * @param token token
 	 * @returns 所有分区
 	 */
-	async getComicCategories(token: string) {
+	async getComicCategories(token: string): Promise<ICategories> {
 		return await fetch(`${PicAcgConstants.Url}/categories`, {
 			headers: generateHeader('categories', 'GET', token),
 		}).then((res) => res.json());
@@ -32,7 +33,7 @@ class Categories extends Service {
 		page: number,
 		title: string,
 		sort: 'ua' | 'dd' | 'da' | 'ld' | 'vd'
-	) {
+	): Promise<ICategoryDetail> {
 		return await fetch(`${PicAcgConstants.Url}/comics?page=${page}&c=${title}&s=${sort}`, {
 			headers: generateHeader(`comics?page=${page}&c=${title}&s=${sort}`, 'GET', token),
 		}).then((res) => res.json());
