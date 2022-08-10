@@ -8,6 +8,11 @@ export const router: Record<
 	all: {
 		'/login': controller.auth.getToken,
 		'/collections': controller.collections.getCollections,
+		'/categories': controller.categories.getCategories,
+		'/categories/detail': controller.categories.getCategoryDetail,
+		'/comics/info': controller.comics.getComicInfo,
+		'/comics/chapter': controller.comics.getComicChapters,
+		'/comics/pics': controller.comics.getComicPics,
 	},
 	get: {},
 	post: {},
