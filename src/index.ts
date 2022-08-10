@@ -18,5 +18,5 @@ app.get('/*', async (request: Request, response: Response): Promise<any> => {
 
 	const controller = router[method][pathname] || router.all[pathname];
 	if (controller) response.send(await controller(request, response));
-	else response.send(404); // 找不到对应的 controller
+	else response.sendStatus(404); // 找不到对应的 controller
 });
