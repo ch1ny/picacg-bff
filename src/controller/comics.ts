@@ -7,20 +7,6 @@ class Comics extends Controller {
 		super();
 	}
 
-	async getCategories(request: Request, response: Response) {
-		return await service.comics.getComicCategories(request.query.token as string);
-	}
-
-	async getCategoryDetail(request: Request, response: Response) {
-		const { token, page, title, sort } = request.query;
-		return await service.comics.getComicBlockDetail(
-			`${token}`,
-			parseInt(`${page}`),
-			`${title}`,
-			sort as 'ua' | 'dd' | 'da' | 'ld' | 'vd'
-		);
-	}
-
 	async getComicInfo(request: Request, response: Response) {
 		const { token, id } = request.query as {
 			token: string;
