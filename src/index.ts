@@ -14,7 +14,9 @@ app.get('/*', async (request: Request, response: Response): Promise<any> => {
 	response.setHeader('Access-Control-Allow-Origin', '*');
 
 	const pathname = request.path;
+	const method = request.method.toLowerCase();
 
-	const controller = router[pathname];
-	response.send(await controller(request, response));
+	const controller = router[method][pathname] || router.all[pathname];
+	if (controller) response.send(await controller(request, response));
+	else response.send(404); // 找不到对应的 controller
 });

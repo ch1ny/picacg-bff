@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
-import { Service } from '.';
 import { PicAcgConstants } from '../constants';
+import { Service } from '../core';
 import { getSignature } from '../util';
 
 class Collections extends Service {

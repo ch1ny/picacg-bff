@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Controller } from '.';
+import { Controller } from '../core';
 import service from '../service';
 
 class Collections extends Controller {
