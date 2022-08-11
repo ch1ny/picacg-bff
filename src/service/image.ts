@@ -7,7 +7,7 @@ class Image extends Service {
 	}
 
 	async proxyImage(picUrl: string) {
-		fetch(picUrl, {
+		return await fetch(picUrl, {
 			method: 'GET',
 			headers: {
 				accept: 'application/vnd.picacomic.com.v1+json',
@@ -23,7 +23,7 @@ class Image extends Service {
 				'image-quality': 'original',
 				nonce: '4ce7a7aa759b40f794d189a88b84aba8',
 			},
-		});
+		}).then((res) => res.buffer());
 	}
 }
 
