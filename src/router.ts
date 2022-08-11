@@ -13,6 +13,7 @@ export const router: Record<
 		'/comics/info': controller.comics.getComicsInfo,
 		'/comics/chapter': controller.comics.getComicsChapters,
 		'/comics/pics': controller.comics.getComicsPics,
+		'/image/proxy': controller.image.proxyImage,
 	},
 	get: {},
 	post: {},
