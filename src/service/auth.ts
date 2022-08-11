@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 import { PicAcgConstants } from '../constants';
 import { Service } from '../core';
+import { IToken } from '../types';
 import { generateHeader } from '../util';
 
 class Auth extends Service {

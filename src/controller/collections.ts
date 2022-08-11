@@ -7,7 +7,7 @@ class Collections extends Controller {
 		super();
 	}
 
-	async getCollections(request: Request, response: Response): Promise<ICollections> {
+	async getCollections(request: Request, response: Response) {
 		return await service.collections.getCollections(request.query.token as string);
 	}
 }
